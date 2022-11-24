@@ -16,7 +16,7 @@ export default function Callback() {
         code = params.get('code'),
         searchParamsBody = new URLSearchParams({
             code: code,
-            redirect_uri: 'http://localhost:3000/callback',
+            redirect_uri: 'https://spotify-search-teal.vercel.app/callback',
             grant_type: 'client_credentials',
         }),
         body = searchParamsBody.toString();
