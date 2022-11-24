@@ -6,7 +6,10 @@ export default function () {
         signOut = () => {
             setUser(null);
         },
-        authorizeUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&redirect_uri=http://localhost:3000/callback`;
+        redirect_uri =
+            'https://spotify-search-7mi73c1ur-johanledel.vercel.app/callback',
+        redirect_uri_dev = 'http://localhost:3000/callback',
+        authorizeUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&redirect_uri=${redirect_uri}`;
 
     return (
         <nav className="header">
