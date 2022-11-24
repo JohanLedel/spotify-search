@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useContext, createContext } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Home from './pages/Home';
+import Header from './components/Header';
+import Search from './pages/Search';
+import Callback from './pages/Callback';
+
+export const UserContext = React.createContext(null);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [user, setUser] = useState(null);
+
+    return (
+        <div className="App">
+            <UserContext.Provider value={{ user, setUser }}>
+                <Header />
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/search" element={<Search />} />
+                        <Route exact path="/callback" element={<Callback />}>
+                            <Route exact path=":code" element={<Callback />} />
+                        </Route>
+                    </Routes>
+                </Router>
+            </UserContext.Provider>
+        </div>
+    );
 }
 
 export default App;
