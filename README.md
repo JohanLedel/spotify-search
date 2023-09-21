@@ -1,3 +1,6 @@
+#### Simple search app that uses spotifys authentication and web api.
+
+
 ### `npm install`
 
 ### `npm start`
